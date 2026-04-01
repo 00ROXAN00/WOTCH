@@ -1,0 +1,88 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background */
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    background: 
+        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
+        url("bg.jpg");   /* your image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    padding: 20px;
+    font-size: 40px;
+    letter-spacing: 3px;
+    color: #e50914; /* Netflix red */
+}
+
+/* Container layout */
+h2 {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+/* Links as cards */
+a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+}
+
+/* Images */
+a img {
+    width: 260px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 0.4s;
+    box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+
+/* Hover effect */
+a:hover img {
+    transform: scale(1.08);
+    filter: brightness(60%);
+}
+
+/* Play button effect */
+a::after {
+    content: "▶";
+    font-size: 50px;
+    color: white;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* Show play icon on hover */
+a:hover::after {
+    opacity: 1;
+}
+
+/* Text spacing */
+a {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

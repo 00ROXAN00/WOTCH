@@ -1,0 +1,103 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Background */
+body {
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
+                url("Hollywood BG.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+/* Title */
+h1 {
+    margin: 25px;
+    font-size: 3rem;
+    color: red;
+}
+
+/* Container fix */
+h2, body > a {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+/* Card */
+a {
+    display: block;
+    width: 300px;
+    text-decoration: none;
+    color: white;
+}
+
+/* Image wrapper (IMPORTANT) */
+a img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+}
+
+/* Text above image */
+a {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* PLAY ICON EFFECT */
+a {
+    position: relative;
+}
+
+/* Play button */
+a::after {
+    content: "▶";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 50px;
+    color: white;
+    background: rgba(0,0,0,0.6);
+    padding: 15px 20px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+a:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Zoom effect */
+a:hover img {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+footer {
+    position: fixed;   /* stick to bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    background: rgba(0, 0, 0, 0.8);
+    color: #aaa;
+    
+    text-align: center;
+    padding: 10px;
+    
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* Optional hover effect */
+footer p:hover {
+    color: #fff;
+}
