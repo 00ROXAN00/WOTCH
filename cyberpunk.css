@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&display=swap');
+
+/* ─── Variables ─── */
+:root {
+  --neon-red:  #ff2255;
+  --neon-cyan: #00ffe1;
+  --neon-gold: #ffd000;
+  --bg-dark:   #07070f;
+  --card-bg:   rgba(15, 15, 30, 0.92);
+  --text-main: #ffffff;
+  --text-sub:  #c8c8e8;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── Body ─── */
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 0%, #1a003a 0%, #07070f 65%);
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* subtle scanlines */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,255,225,0.018) 3px,
+    rgba(0,255,225,0.018) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Particles ─── */
+.particle {
+  position: fixed;
+  bottom: -10px;
+  width: 3px;
+  height: 3px;
+  background: var(--neon-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--neon-cyan);
+  animation: floatUp 8s linear infinite;
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(1);   opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-100vh) scale(0.4); opacity: 0; }
+}
+
+/* ─── Character Container ─── */
+.character-container,
+.character {
+  display: none;
+}
+
+/* ─── H1 Title ─── */
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  letter-spacing: 0.3em;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  margin: 1.5rem 0 0.5rem;
+
+  /* Solid white — always readable */
+  color: #ffffff;
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.9),
+    0 0 30px var(--neon-red),
+    0 0 60px rgba(255,34,85,0.4),
+    3px 3px 0px rgba(255,34,85,0.5);
+}
+
+/* thin accent line under title */
+h1::after {
+  content: '';
+  display: block;
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-red), var(--neon-cyan), transparent);
+  margin: 0.4rem auto 0;
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* ─── H2 grid wrapper ─── */
+h2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 3rem auto 6rem;
+  padding: 0 2rem;
+  font-size: 1rem;
+}
+
+/* ─── Cards / Links ─── */
+h2 a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  position: relative;
+  z-index: 10;
+  padding: 1.8rem 1.2rem;
+  background: var(--card-bg);
+  border: 1px solid rgba(0,255,225,0.25);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+  /* Card label text */
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.9),
+    0 0 18px var(--neon-cyan);
+}
+
+/* glow line at card top on hover */
+h2 a::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-red), var(--neon-cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+h2 a:hover::before { transform: scaleX(1); }
+
+h2 a:hover {
+  transform: translateY(-6px);
+  border-color: var(--neon-cyan);
+  box-shadow:
+    0 0 20px rgba(0,255,225,0.25),
+    0 12px 40px rgba(0,0,0,0.6);
+  color: var(--neon-gold);
+  text-shadow:
+    0 0 8px var(--neon-gold),
+    0 0 22px rgba(255,208,0,0.6);
+}
+
+/* ─── Card Images ─── */
+h2 a img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+  filter: brightness(0.85) saturate(1.2);
+  transition: filter 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+h2 a:hover img {
+  filter: brightness(1) saturate(1.5);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+  h2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    padding: 0 1rem;
+  }
+  h2 a {
+    font-size: 1.1rem;
+    padding: 1.2rem 0.8rem;
+  }
+  h2 a img {
+    height: 110px;
+  }
+}
+
+@media (max-width: 360px) {
+  h2 { grid-template-columns: 1fr; }
+}
