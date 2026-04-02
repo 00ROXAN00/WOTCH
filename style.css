@@ -1,0 +1,113 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #000;
+    color: #ffcc00;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Background glow */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.3), transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.3), transparent 50%);
+    z-index: -1;
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    font-size: 4rem;
+    margin: 25px 0;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* 🔥 MAIN GRID */
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* ✅ PC = 4 per row */
+    gap: 18px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* 📱 MOBILE = 2 per row */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 420px;
+    }
+}
+
+/* 📱 MOBILE = ALWAYS 2 */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 420px; /* 🔥 smaller on phone */
+        gap: 14px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .container {
+        max-width: 360px;
+        gap: 12px;
+    }
+}
+
+/* Cards */
+a {
+    display: block;
+    background: linear-gradient(145deg, #1a0000, #330000);
+    border-radius: 15px;
+    padding: 10px; /* 🔥 reduced size */
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* Hover */
+a:hover {
+    transform: translateY(-8px);
+}
+
+/* Title */
+.title {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* Image FIX (NO SHRINK) */
+img {
+    width: 100%;
+    aspect-ratio: 2/3; /* 🔥 keeps perfect shape */
+    object-fit: cover;
+    border-radius: 10px;
+}
